@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Controle de Contas - Simples</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Controle de Contas</h1>
+      <p class="subtitle">Adicione suas contas, marque como pagas e acompanhe os totais do mês.</p>
+    </header>
+
+    <section class="controls">
+      <div class="month-picker">
+        <label for="monthSelect">Mês:</label>
+        <input id="monthSelect" type="month" />
+      </div>
+
+      <div class="totals">
+        <div class="total-card">
+          <div class="label">Total Geral</div>
+          <div id="totalAll" class="value">R$ 0,00</div>
+        </div>
+        <div class="total-card">
+          <div class="label">Pago</div>
+          <div id="totalPaid" class="value paid">R$ 0,00</div>
+        </div>
+        <div class="total-card">
+          <div class="label">Pendente</div>
+          <div id="totalPending" class="value pending">R$ 0,00</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <form id="billForm" class="bill-form" autocomplete="off">
+        <input type="hidden" id="billId" />
+        <div class="row">
+          <div class="field">
+            <label for="name">Nome da conta</label>
+            <input id="name" type="text" placeholder="Ex: Internet" required />
+          </div>
+
+          <div class="field">
+            <label for="value">Valor (R$)</label>
+            <input id="value" type="number" min="0" step="0.01" placeholder="0.00" required />
+          </div>
+
+          <div class="field">
+            <label for="dueDate">Vencimento</label>
+            <input id="dueDate" type="date" required />
+          </div>
+        </div>
+
+        <div class="row actions">
+          <button id="submitBtn" type="submit" class="btn">Adicionar</button>
+          <button id="clearBtn" type="button" class="btn ghost">Limpar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Contas</h2>
+      <ul id="billsList" class="bills-list" aria-live="polite"></ul>
+      <p id="emptyMsg" class="empty">Nenhuma conta para este mês — adicione a primeira!</p>
+    </section>
+
+    <footer class="footer">
+      <small>Salvo localmente no seu navegador · Desenvolvido por você 💻</small>
+    </footer>
+  </main>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
